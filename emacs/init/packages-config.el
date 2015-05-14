@@ -64,3 +64,37 @@
 ;; symbol's value as variable is void: hl-line-mode
 ;; 所以添加下面的一行
 (hl-line-mode nil)
+
+;;-----------------------
+;; emmet mode
+;;-----------------------
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
+
+
+;;-----------------------
+;; smex
+;; 用来对emacs 的 m-x 进行自动补全
+;; ido是对 c-x c-f 补全
+;; https://github.com/nonsequitur/smex
+;;-----------------------
+(require 'smex) ; Not needed if you use package.el
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+                  ; when Smex is auto-initialized on its first run.
+(setq smex-prompt-string "My Lord -> ")
+
+;; 打开行数设置
+(global-linum-mode t)
+
+;;-----------------------
+;; theme
+;;-----------------------
+(load-theme 'lush t)
+;;-----------------------
+; (load-theme 'hipster t)
+; (set-frame-parameter (selected-frame) 'alpha '(88 70))
+; (add-to-list 'default-frame-alist '(alpha 88 70))
+;;-----------------------
+

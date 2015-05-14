@@ -20,6 +20,12 @@
     flx-ido
     evil
     evil-escape
+    evil-nerd-commenter
+    emmet-mode
+    smex
+    color-theme
+    lush-theme
+    hipster-theme
   ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
