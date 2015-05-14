@@ -1,7 +1,11 @@
 Editor Config
 ==============
 # Emacs
-组织结构
+> 暂时只是在windows 8 x64位上使用，并未兼容其他平台
+> 只支持emacs 24
+
+
+## 配置组织结构
 
 ```
 .emacs.d
@@ -13,11 +17,13 @@ Editor Config
         |-- packages-config.el
         \-- packages-install.el
 ```
-整体流程是emacs先找到init.el
-根据里面的配置`load packages-config.el`
-在packages-config中先 `load packages-install.el`判断有没有未安装的插件，如果没有则先安装，如果有则返回配置文件进行配置
+## 整体流程
+1. emacs先找到`c:\Users\<USER>\AppData\Roaming\.emacs.d\`文件夹下的`init.el`
+2. 根据`init.el`里面的配置先`load packages-config.el`
+3. 在`packages-config`中又先 `load packages-install.el`来判断`required-packages`中还有没有未安装的插件，如果有则先安装，如果全都安装了则返回`packages-config`对所有插件进行配置
+4. 等到emacs初始化完成以后，`init.el`里的`add-hook 'after-init-hook`就会生效，加载全局生效的`keybind.el`
 
-目前添加的插件：
+## 目前添加的插件：
 - magit
 - yasnippet
 - fiplr
@@ -27,6 +33,12 @@ Editor Config
 - flx-ido
 - evil
 - evil-escape
+- evil-nerd-commenter
+- emmet-mode
+- smex
+- color-theme
+- lush-theme
+- hipster-theme
 
 # Sublime 3
 一直没有找到好的插件来解决跳出光标右侧字符：` , ; ] } ) ' " `
