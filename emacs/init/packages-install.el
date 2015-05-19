@@ -26,6 +26,14 @@
     color-theme
     lush-theme
     hipster-theme
+    window-numbering
+    avy
+    ace-window
+    project-explorer
+    js2-mode
+    js2-refactor
+    sr-speedbar
+    smart-mode-line
   ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)

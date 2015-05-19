@@ -39,6 +39,14 @@ Editor Config
 - color-theme
 - lush-theme
 - hipster-theme
+- window-numbering
+- avy
+- ace-window
+- project-explorer
+- js2-mode
+- js2-refactor
+- sr-speedbar
+- smart-mode-line
 
 # Sublime 3
 一直没有找到好的插件来解决跳出光标右侧字符：` , ; ] } ) ' " `

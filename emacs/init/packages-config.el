@@ -98,3 +98,53 @@
 ; (add-to-list 'default-frame-alist '(alpha 88 70))
 ;;-----------------------
 
+;;-----------------------
+;; window numbering
+;; 使用M-<0-9>切换window
+;; 如果希望打开特定buffer的时候，使用特定的数字，就用下面的绑定
+;; (setq window-numbering-assign-func
+;;      (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
+;;-----------------------
+(window-numbering-mode t)
+
+;;-----------------------
+;; ace-window
+;; 使用M-p之后，还需要再输入数字进行切换，还不如window numbering
+;;-----------------------
+; (global-set-key (kbd "M-p") 'ace-window)
+
+;;-----------------------
+;; direx
+;; sidebar 浏览项目目录
+;;-----------------------
+(require 'direx)
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+
+;;-----------------------
+;; js2-mode
+;; 在js源码里的major mode
+;;-----------------------
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;;-----------------------
+;; js2-refactor
+;; 在js源码里的major mode
+;;-----------------------
+(require 'js2-refactor)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-m")
+
+;;-----------------------
+;; sr-speedbar
+;; 在js源码里的major mode
+;;-----------------------
+(require 'sr-speedbar)
+
+;;-----------------------
+;; smart-mode-line
+;; 在js源码里的major mode
+;;-----------------------
+;; 修复emacs总是提示“Loading themes can run lisp code” 
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
+(setq sml/theme 'dark)

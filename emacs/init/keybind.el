@@ -20,3 +20,6 @@
 
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
+
+;; sr-speedbar 侧边栏
+; (global-set-key (kbd "C-c C-k") 'sr-speedbar-toggle)
