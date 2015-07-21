@@ -65,13 +65,6 @@
 ;; 所以添加下面的一行
 (hl-line-mode nil)
 
-;;-----------------------
-;; emmet mode
-;;-----------------------
-(require 'emmet-mode)
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'html-mode-hook 'emmet-mode)
-(add-hook 'css-mode-hook  'emmet-mode)
 
 
 ;;-----------------------
@@ -117,8 +110,8 @@
 ;; direx
 ;; sidebar 浏览项目目录
 ;;-----------------------
-(require 'direx)
-(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+; (require 'direx)
+; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
 
 ;;-----------------------
 ;; js2-mode
@@ -138,7 +131,7 @@
 ;; sr-speedbar
 ;; 在js源码里的major mode
 ;;-----------------------
-(require 'sr-speedbar)
+; (require 'sr-speedbar)
 
 ;;-----------------------
 ;; smart-mode-line
@@ -148,3 +141,43 @@
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 (setq sml/theme 'dark)
+
+
+;;-----------------------
+;; web-mode
+;; 替代原来的html mode
+;; http://web-mode.org/ Install
+;;-----------------------
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+    (setq web-mode-code-indent-offset 4)
+    (setq web-mode-markup-indent-offset 4)
+    (setq web-mode-css-indent-offset 4)
+    (setq web-mode-enable-comment-keywords t)
+    (setq web-mode-enable-current-column-highlight t)
+    ; (setq web-mode-enable-auto-pairing t)
+)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+
+;;-----------------------
+;; electric-indent-mode
+;;-----------------------
+(electric-indent-mode 1)
+
+;;-----------------------
+;; emmet mode
+;;-----------------------
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
+(add-hook 'web-mode-hook  'emmet-mode)
+
+;;-----------------------
+;; smartparens
+;; 自动补全
+;;-----------------------
+(smartparens-global-mode t)

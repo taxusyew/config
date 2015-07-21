@@ -9,9 +9,12 @@
 (package-initialize)
 
 ; 设置需要安装的插件
+; <- 左边依赖右边
+; smartparens <- cl-lib 0.3 / dash 2.10.0
 (defvar required-packages
   '(
     magit
+    dash
     yasnippet
     fiplr
     async
@@ -34,6 +37,8 @@
     js2-refactor
     sr-speedbar
     smart-mode-line
+    web-mode
+    smartparens
   ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
