@@ -7,6 +7,7 @@
 
 ;; 不再显示原始的欢迎界面
 (setq inhibit-startup-screen "*scratch*")
+
 ;; 设置scratch提示
 (setq initial-scratch-message ";; scratch buffer\n;; <c-j> to evil lisp\n\n")
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -14,7 +15,7 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ; 设置字体
-(set-default-font "Consolas-12")
+(set-default-font "Consolas-11")
 (set-fontset-font "fontset-default"
   'unicode '("微软雅黑" . "unicode-bmp"))
 

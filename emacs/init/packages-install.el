@@ -10,7 +10,11 @@
 
 ; 设置需要安装的插件
 ; <- 左边依赖右边
+; ace-window <- avy
+; helm <- async 1.3 / cl-lib 0.5 / emacs 24 / helm-core 1.7.4
 ; smartparens <- cl-lib 0.3 / dash 2.10.0
+; projectile <- pkg-info 0.4 / dash 2.10.0
+; impatient-mode <- simple-httpd 1.4.0 /  htmlize 1.40
 (defvar required-packages
   '(
     magit
@@ -18,27 +22,34 @@
     yasnippet
     fiplr
     async
-    helm
+    avy
+    ace-window
     flx
     flx-ido
     evil
     evil-escape
+    evil-matchit
+    evil-visualstar
     evil-nerd-commenter
     emmet-mode
-    smex
     color-theme
     lush-theme
+    helm
+    hydra
     hipster-theme
-    window-numbering
-    avy
-    ace-window
+    htmlize
     project-explorer
     js2-mode
     js2-refactor
+    smex
     sr-speedbar
     smart-mode-line
-    web-mode
     smartparens
+    simple-httpd
+    impatient-mode
+    web-mode
+    window-numbering
+    projectile
   ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)

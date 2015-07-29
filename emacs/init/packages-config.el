@@ -25,6 +25,7 @@
 
 ;;-----------------------
 ;; helm
+;; 底部弹出window交互
 ;;-----------------------
 (require 'helm-config)
 
@@ -60,12 +61,25 @@
 (require 'evil-escape)
 (evil-escape-mode 1)
 
+;;-----------------------
+;; evil-visualstar
+;; Make a visual selection with v or V, 
+;; and then hit * to search that selection forward, 
+;; or # to search that selection backward.
+;;-----------------------
+(global-evil-visualstar-mode)
+
+;;-----------------------
+;; evil-matchit
+;; Press “%” to jump inside between tag pair in normal mode
+;;-----------------------
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
 ;; 如果只有上面的配置，那么在输入文件的时候，直接点击k，会报出下面的错误
 ;; symbol's value as variable is void: hl-line-mode
 ;; 所以添加下面的一行
 (hl-line-mode nil)
-
-
 
 ;;-----------------------
 ;; smex
@@ -156,7 +170,8 @@
     (setq web-mode-markup-indent-offset 4)
     (setq web-mode-css-indent-offset 4)
     (setq web-mode-enable-comment-keywords t)
-    (setq web-mode-enable-current-column-highlight t)
+    ; (setq web-mode-enable-current-column-highlight t)
+    (setq web-mode-enable-current-element-highlight t)
     ; (setq web-mode-enable-auto-pairing t)
 )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
@@ -165,7 +180,7 @@
 ;;-----------------------
 ;; electric-indent-mode
 ;;-----------------------
-(electric-indent-mode 1)
+; (electric-indent-mode 1)
 
 ;;-----------------------
 ;; emmet mode
@@ -178,6 +193,33 @@
 
 ;;-----------------------
 ;; smartparens
-;; 自动补全
+;; 括号补全
 ;;-----------------------
 (smartparens-global-mode t)
+
+
+;;-----------------------
+;; projectile
+;; 项目管理
+;;-----------------------
+(projectile-global-mode)
+
+;;-----------------------
+;; simple-httpd
+;; 简单服务器
+;;-----------------------
+(require 'simple-httpd)
+; (setq httpd-root "/var/www")
+
+;;-----------------------
+;; impatient-mode
+;; 页面及时预览
+;;-----------------------
+(require 'impatient-mode)
+
+; (require 'hydra-examples)
+
+; (defhydra hydra-zoom (global-map "<f2>")
+;   "zoom"
+;   ("l" text-scale-increase "large")
+;   ("s" text-scale-decrease "small"))
