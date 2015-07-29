@@ -21,32 +21,42 @@ Editor Config
 1. emacs先找到`c:\Users\<USER>\AppData\Roaming\.emacs.d\`文件夹下的`init.el`
 2. 根据`init.el`里面的配置先`load packages-config.el`
 3. 在`packages-config`中又先 `load packages-install.el`来判断`required-packages`中还有没有未安装的插件，如果有则先安装，如果全都安装了则返回`packages-config`对所有插件进行配置
-4. 等到emacs初始化完成以后，`init.el`里的`add-hook 'after-init-hook`就会生效，加载全局生效的`keybind.el`
+4. 等到emacs初始化完成以后，`init.el`里的`add-hook 'after-init-hook`就会生效，加载全局生效的`keybind.el`,其中使用`hydra`改写快捷键的调用，大幅提升对window的管理
 
 ## 目前添加的插件：
 - magit
+- dash
 - yasnippet
 - fiplr
 - async
-- helm
+- avy
+- ace-window
 - flx
 - flx-ido
 - evil
 - evil-escape
+- evil-matchit
+- evil-visualstar
 - evil-nerd-commenter
 - emmet-mode
-- smex
 - color-theme
 - lush-theme
+- helm
+- hydra
 - hipster-theme
-- window-numbering
-- avy
-- ace-window
+- htmlize
 - project-explorer
 - js2-mode
 - js2-refactor
+- smex
 - sr-speedbar
 - smart-mode-line
+- smartparens
+- simple-httpd
+- impatient-mode
+- web-mode
+- window-numbering
+- projectile
 
 # Sublime 3
 一直没有找到好的插件来解决跳出光标右侧字符：` , ; ] } ) ' " `
