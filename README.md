@@ -40,6 +40,7 @@ Editor Config
 - evil-nerd-commenter
 - emmet-mode
 - color-theme
+- company
 - lush-theme
 - helm
 - hydra
