@@ -24,6 +24,10 @@
 ;; 绑定注释插件快捷键
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
+; 下面的为什么没有用？要第二个才行
+; (global-set-key (kbd "C-e") 'end-of-line)
+; (global-set-key (kbd "C-c C-e") 'end-of-line)
+
 ;; 默认
 ;; 复制  c-insert
 ;; 粘贴  
@@ -45,7 +49,7 @@
 ; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
 
 (global-set-key
-     (kbd "C-M-o")
+     (kbd "C-M-w")
      (defhydra hydra-window ()
           "window"
           ("h" windmove-left)

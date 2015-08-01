@@ -217,9 +217,10 @@
 ;;-----------------------
 (require 'impatient-mode)
 
-; (require 'hydra-examples)
-
-; (defhydra hydra-zoom (global-map "<f2>")
-;   "zoom"
-;   ("l" text-scale-increase "large")
-;   ("s" text-scale-decrease "small"))
+;;-----------------------
+;; company
+;; 自动补全
+;;-----------------------
+(require 'company)         
+(add-hook 'after-init-hook 'global-company-mode)
+; (require 'company-web-html)

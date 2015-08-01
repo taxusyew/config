@@ -15,6 +15,7 @@
 ; smartparens <- cl-lib 0.3 / dash 2.10.0
 ; projectile <- pkg-info 0.4 / dash 2.10.0
 ; impatient-mode <- simple-httpd 1.4.0 /  htmlize 1.40
+; company-web <- company 0.8.0 / dash 2.8.0 / web-completion-data 0.1.0
 (defvar required-packages
   '(
     magit
@@ -33,6 +34,9 @@
     evil-nerd-commenter
     emmet-mode
     color-theme
+    company
+    web-completion-data
+    company-web
     lush-theme
     helm
     hydra
