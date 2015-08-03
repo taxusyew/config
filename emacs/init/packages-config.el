@@ -18,7 +18,8 @@
 ;;-----------------------
 (require 'yasnippet)
 (yas-global-mode 1)
-(yas-load-directory "~/.emacs.d/snippets")
+; (yas-load-directory "~/.emacs.d/snippets")
+(yas-load-directory "~/.emacs.d/elpa/yasnippet-20150415.244/snippets")
 (add-hook 'term-mode-hook (lambda()
     (setq yas-dont-activate t)))
 
