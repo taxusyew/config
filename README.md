@@ -24,7 +24,6 @@ Editor Config
 4. 等到emacs初始化完成以后，`init.el`里的`add-hook 'after-init-hook`就会生效，加载全局生效的`keybind.el`,其中使用`hydra`改写快捷键的调用，大幅提升对window的管理
 
 ## 目前添加的插件：
-- magit
 - dash
 - yasnippet
 - fiplr
@@ -49,6 +48,7 @@ Editor Config
 - project-explorer
 - js2-mode
 - js2-refactor
+- magit
 - smex
 - sr-speedbar
 - smart-mode-line
