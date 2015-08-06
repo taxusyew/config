@@ -10,6 +10,7 @@
 
 ;; 设置scratch提示
 (setq initial-scratch-message ";; scratch buffer\n;; <c-j> to evil lisp\n\n")
+;; 隐藏工具栏
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))

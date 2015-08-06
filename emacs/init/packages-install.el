@@ -2,6 +2,7 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'exec-path "C:\\Users\\TT\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin")
 
 ; 总是提示无法创建连接，即使已经开了vpn
 ; (add-to-list 'package-archives
@@ -10,6 +11,7 @@
 
 ; 设置需要安装的插件
 ; <- 左边依赖右边
+; magit <-  dash 2.10.0 / emacs 24.4 / git-commit 2.1.0 / magit-popup 2.1.0 / with-editor 2.1.0
 ; ace-window <- avy
 ; helm <- async 1.3 / cl-lib 0.5 / emacs 24 / helm-core 1.7.4
 ; smartparens <- cl-lib 0.3 / dash 2.10.0
@@ -18,7 +20,6 @@
 ; company-web <- company 0.8.0 / dash 2.8.0 / web-completion-data 0.1.0
 (defvar required-packages
   '(
-    magit
     dash
     yasnippet
     fiplr
@@ -45,6 +46,7 @@
     project-explorer
     js2-mode
     js2-refactor
+    magit
     smex
     sr-speedbar
     smart-mode-line
