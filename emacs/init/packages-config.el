@@ -27,8 +27,11 @@
 ;;-----------------------
 ;; helm
 ;; 底部弹出window交互
+;; Helm has a built-in fuzzy matcher that is activated for some commands. 
+;; Fuzzy matching is disabled by default.
 ;;-----------------------
 (require 'helm-config)
+(setq helm-M-x-fuzzy-match t)
 
 ;;-----------------------
 ;; flx-ido
