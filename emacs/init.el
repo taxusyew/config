@@ -15,6 +15,7 @@
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+(set-language-environment "UTF-8")
 ; 设置字体
 (set-default-font "Consolas-11")
 (set-fontset-font "fontset-default"
