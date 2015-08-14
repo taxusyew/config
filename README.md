@@ -68,3 +68,6 @@ Editor Config
 
 解决办法把`"keys": ["tab"], "command": "next_field"`在自己的键位绑定下面重写一次
 后面的优先级比前面的高
+
+# Total Command
+
