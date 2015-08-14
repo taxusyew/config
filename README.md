@@ -70,4 +70,10 @@ Editor Config
 后面的优先级比前面的高
 
 # Total Command
-
+<kbd>C+1</kbd>=cm_leftactivatetab1
+<kbd>C+2</kbd>=cm_leftactivatetab2
+<kbd>C+3</kbd>=cm_leftactivatetab3
+<kbd>A+1</kbd>=cm_rightactivatetab1
+<kbd>A+2</kbd>=cm_rightactivatetab2
+<kbd>C+n</kbd>=cm_OpenNewTab
+<kbd>C+t</kbd>=cm_FileSync
