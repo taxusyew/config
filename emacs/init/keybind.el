@@ -47,6 +47,7 @@
 ; (global-set-key (kbd "M-<up>") 'shrink-window)
 ; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
 ; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
+; (global-set-key (kbd "C-[") 'indent-region)
 
 (global-set-key
      (kbd "C-M-w")
@@ -74,3 +75,9 @@
           ("i" ace-maximize-window "ace-one" :color blue)
           ("b" ido-switch-buffer "buf")
           ("q" nil "cancel")))
+
+;; 光标插件
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
