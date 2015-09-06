@@ -73,6 +73,7 @@ Editor Config
 # Total Command
 定义左边标签页快速定位
 <kbd>C+1</kbd>=cm_leftactivatetab1
+
 <kbd>C+2</kbd>=cm_leftactivatetab2
 <kbd>C+3</kbd>=cm_leftactivatetab3
 定义右边标签页快速定位
