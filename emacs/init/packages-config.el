@@ -40,9 +40,10 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
+; ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+(setq ido-auto-merge-work-directories-length -1)
 
 ;;-----------------------
 ;; evil
@@ -98,6 +99,13 @@
 
 ;; 打开行数设置
 (global-linum-mode t)
+
+;;-----------------------
+;; linum-relative
+;; 显示相对当前行号的其他行数
+;;-----------------------
+(require 'linum-relative)
+(linum-on)
 
 ;;-----------------------
 ;; theme
@@ -228,3 +236,9 @@
 (require 'company)         
 (add-hook 'after-init-hook 'global-company-mode)
 ; (require 'company-web-html)
+
+;;-----------------------
+;; multiple-cursors
+;; 多光标
+;;-----------------------
+(require 'multiple-cursors)

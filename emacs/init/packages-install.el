@@ -39,6 +39,7 @@
     web-completion-data
     company-web
     lush-theme
+    linum-relative
     helm
     hydra
     hipster-theme
@@ -47,6 +48,7 @@
     js2-mode
     js2-refactor
     magit
+    multiple-cursors
     smex
     sr-speedbar
     smart-mode-line
