@@ -259,3 +259,10 @@
 ;;-----------------------
 (elpy-enable)
 (elpy-use-ipython)
+
+;;-----------------------
+;; recentf
+;; This mode is part of GNU Emacs 21
+;;-----------------------
+(recentf-mode 1)
+(setq recentf-max-menu-items 20)
