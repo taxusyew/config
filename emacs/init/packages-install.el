@@ -18,16 +18,21 @@
 ; projectile <- pkg-info 0.4 / dash 2.10.0
 ; impatient-mode <- simple-httpd 1.4.0 /  htmlize 1.40
 ; company-web <- company 0.8.0 / dash 2.8.0 / web-completion-data 0.1.0
+; aggressive-indent <- cl-lib 0.5 / emacs 24.1 / names 20150125.9
+; elpy <- company 0.8.2 / find-file-in-project 3.3 / highlight-indentation 0.5.0 / pyvenv 1.3 / yasnippet 0.8.0
 (defvar required-packages
   '(
     dash
     yasnippet
     fiplr
+    names
     async
     avy
     ace-window
+    aggressive-indent
     flx
     flx-ido
+    find-file-in-project
     evil
     evil-escape
     evil-matchit
@@ -43,6 +48,7 @@
     helm
     hydra
     hipster-theme
+    highlight-indentation
     htmlize
     project-explorer
     js2-mode
@@ -58,6 +64,8 @@
     web-mode
     window-numbering
     projectile
+    pyvenv
+    elpy
   ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)

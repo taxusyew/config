@@ -242,3 +242,20 @@
 ;; 多光标
 ;;-----------------------
 (require 'multiple-cursors)
+
+;;-----------------------
+;; aggressive-indent
+;; 自动化缩进
+;;-----------------------
+(require 'aggressive-indent)
+(global-aggressive-indent-mode 1)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;;-----------------------
+;; elpy
+;; python开发环境
+;;-----------------------
+(elpy-enable)
+(elpy-use-ipython)
