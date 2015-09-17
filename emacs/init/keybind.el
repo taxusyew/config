@@ -81,3 +81,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; 有道词典快捷键
+(global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point+)

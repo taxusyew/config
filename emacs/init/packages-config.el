@@ -266,3 +266,5 @@
 ;;-----------------------
 (recentf-mode 1)
 (setq recentf-max-menu-items 20)
+
+(require 'w3m-load)

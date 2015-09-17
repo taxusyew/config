@@ -3,6 +3,7 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'exec-path "C:\\Users\\TT\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin")
+(add-to-list 'exec-path "C:\\Users\\TT\\AppData\\Roaming\\.emacs.d\\elpa\\w3m-20150902.240\\")
 
 ; 总是提示无法创建连接，即使已经开了vpn
 ; (add-to-list 'package-archives
@@ -20,6 +21,7 @@
 ; company-web <- company 0.8.0 / dash 2.8.0 / web-completion-data 0.1.0
 ; aggressive-indent <- cl-lib 0.5 / emacs 24.1 / names 20150125.9
 ; elpy <- company 0.8.2 / find-file-in-project 3.3 / highlight-indentation 0.5.0 / pyvenv 1.3 / yasnippet 0.8.0
+; youdao-dictionary <- chinese-word-at-point 0.2 / emacs 24 / names 0.5 / popup 0.5.0
 (defvar required-packages
   '(
     dash
@@ -30,6 +32,7 @@
     avy
     ace-window
     aggressive-indent
+    chinese-word-at-point
     flx
     flx-ido
     find-file-in-project
@@ -63,9 +66,12 @@
     impatient-mode
     web-mode
     window-numbering
+    w3m
     projectile
     pyvenv
+    popup
     elpy
+    youdao-dictionary
   ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
