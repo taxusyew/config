@@ -58,6 +58,7 @@
     js2-refactor
     magit
     multiple-cursors
+    rainbow-delimiters
     smex
     sr-speedbar
     smart-mode-line
