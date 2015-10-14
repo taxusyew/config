@@ -1,17 +1,20 @@
-; my-packages.el
+                                        ; my-packages.el
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'exec-path "C:\\Users\\TT\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin")
-(add-to-list 'exec-path "C:\\Users\\TT\\AppData\\Roaming\\.emacs.d\\elpa\\w3m-20150902.240\\")
+(add-to-list 'exec-path "C:\\Users\\zhanglinzhe\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin")
+(add-to-list 'load-path "D:\\emacs-plugin\\emacs-neotree-dev")
 
-; 总是提示无法创建连接，即使已经开了vpn
-; (add-to-list 'package-archives
-;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+                                        ;(add-to-list 'exec-path "C:\\Users\\TT\\AppData\\Roaming\\.emacs.d\\elpa\\w3m-20150902.240\\")
+
+                                        ; 总是提示无法创建连接，即使已经开了vpn
+                                        ; (add-to-list 'package-archives
+                                        ;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 ; 设置需要安装的插件
 ; <- 左边依赖右边
+; fiplr <-  grizzl
 ; magit <-  dash 2.10.0 / emacs 24.4 / git-commit 2.1.0 / magit-popup 2.1.0 / with-editor 2.1.0
 ; ace-window <- avy
 ; helm <- async 1.3 / cl-lib 0.5 / emacs 24 / helm-core 1.7.4
@@ -26,6 +29,7 @@
   '(
     dash
     yasnippet
+    grizzl
     fiplr
     names
     async
@@ -73,7 +77,7 @@
     popup
     elpy
     youdao-dictionary
-  ) "a list of packages to ensure are installed at launch.")
+    ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
 

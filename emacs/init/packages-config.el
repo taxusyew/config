@@ -1,4 +1,4 @@
-; 先跳转到package-install安装，再回来继续配置包
+                                        ; 先跳转到package-install安装，再回来继续配置包
 (load "~/.emacs.d/init/packages-install.el")
 
 ;;-----------------------
@@ -19,7 +19,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 ; (yas-load-directory "~/.emacs.d/snippets")
-(yas-load-directory "~/.emacs.d/elpa/yasnippet-20150415.244/snippets")
+(yas-load-directory "~/.emacs.d/elpa/yasnippet-20150912.1330/snippets")
 (add-hook 'term-mode-hook (lambda()
     (setq yas-dont-activate t)))
 
@@ -44,6 +44,14 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 (setq ido-auto-merge-work-directories-length -1)
+
+;;-----------------------
+;; evil-leader
+;; You should enable global-evil-leader-mode before you enable evil-mode
+;; 可以配置一整套全新的快捷键，注意和keybind.el进行同步
+;; 该区域配置的快捷键只能在退出编辑模式后使用
+;;-----------------------
+(global-evil-leader-mode)
 
 ;;-----------------------
 ;; evil
@@ -202,6 +210,7 @@
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
 (add-hook 'web-mode-hook  'emmet-mode)
+(setq emmet-move-cursor-between-quotes t)  ;; default nil
 
 ;;-----------------------
 ;; smartparens
@@ -215,6 +224,7 @@
 ;; 项目管理
 ;;-----------------------
 (projectile-global-mode)
+(setq projectile-completion-system 'grizzl)
 
 ;;-----------------------
 ;; simple-httpd
@@ -267,4 +277,10 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 20)
 
-(require 'w3m-load)
+;; (require 'w3m-load)
+
+;;-----------------------
+;; neotree
+;; 没有从melpa安装，直接使用github的最新源码
+;;-----------------------
+(require 'neotree)
