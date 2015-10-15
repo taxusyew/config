@@ -12,19 +12,19 @@
                                         ;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-; 设置需要安装的插件
-; <- 左边依赖右边
-; fiplr <-  grizzl
-; magit <-  dash 2.10.0 / emacs 24.4 / git-commit 2.1.0 / magit-popup 2.1.0 / with-editor 2.1.0
-; ace-window <- avy
-; helm <- async 1.3 / cl-lib 0.5 / emacs 24 / helm-core 1.7.4
-; smartparens <- cl-lib 0.3 / dash 2.10.0
-; projectile <- pkg-info 0.4 / dash 2.10.0
-; impatient-mode <- simple-httpd 1.4.0 /  htmlize 1.40
-; company-web <- company 0.8.0 / dash 2.8.0 / web-completion-data 0.1.0
-; aggressive-indent <- cl-lib 0.5 / emacs 24.1 / names 20150125.9
-; elpy <- company 0.8.2 / find-file-in-project 3.3 / highlight-indentation 0.5.0 / pyvenv 1.3 / yasnippet 0.8.0
-; youdao-dictionary <- chinese-word-at-point 0.2 / emacs 24 / names 0.5 / popup 0.5.0
+                                        ; 设置需要安装的插件
+                                        ; <- 左边依赖右边
+                                        ; fiplr <-  grizzl
+                                        ; magit <-  dash 2.10.0 / emacs 24.4 / git-commit 2.1.0 / magit-popup 2.1.0 / with-editor 2.1.0
+                                        ; ace-window <- avy
+                                        ; helm <- async 1.3 / cl-lib 0.5 / emacs 24 / helm-core 1.7.4
+                                        ; smartparens <- cl-lib 0.3 / dash 2.10.0
+                                        ; projectile <- pkg-info 0.4 / dash 2.10.0
+                                        ; impatient-mode <- simple-httpd 1.4.0 /  htmlize 1.40
+                                        ; company-web <- company 0.8.0 / dash 2.8.0 / web-completion-data 0.1.0
+                                        ; aggressive-indent <- cl-lib 0.5 / emacs 24.1 / names 20150125.9
+                                        ; elpy <- company 0.8.2 / find-file-in-project 3.3 / highlight-indentation 0.5.0 / pyvenv 1.3 / yasnippet 0.8.0
+                                        ; youdao-dictionary <- chinese-word-at-point 0.2 / emacs 24 / names 0.5 / popup 0.5.0
 (defvar required-packages
   '(
     dash
@@ -56,12 +56,15 @@
     hydra
     hipster-theme
     highlight-indentation
+    highlight-parentheses
     htmlize
     project-explorer
     js2-mode
     js2-refactor
+    gh-md
     magit
     multiple-cursors
+    markdown-mode
     rainbow-delimiters
     smex
     sr-speedbar
@@ -81,19 +84,19 @@
 
 (require 'cl)
 
-; method to check if all packages are installed
+                                        ; method to check if all packages are installed
 (defun packages-installed-p ()
   (loop for p in required-packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
 
-; if not all packages are installed, check one by one and install the missing ones.
+                                        ; if not all packages are installed, check one by one and install the missing ones.
 (unless (packages-installed-p)
-  ; check for new packages (package versions)
+                                        ; check for new packages (package versions)
   (message "%s" "Emacs is now refreshing its package database...")
   (package-refresh-contents)
   (message "%s" " done.")
-  ; install the missing packages
+                                        ; install the missing packages
   (dolist (p required-packages)
     (when (not (package-installed-p p))
       (package-install p))))

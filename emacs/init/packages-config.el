@@ -1,4 +1,4 @@
-                                        ; 先跳转到package-install安装，再回来继续配置包
+;; 先跳转到package-install安装，再回来继续配置包
 (load "~/.emacs.d/init/packages-install.el")
 
 ;;-----------------------
@@ -18,10 +18,10 @@
 ;;-----------------------
 (require 'yasnippet)
 (yas-global-mode 1)
-; (yas-load-directory "~/.emacs.d/snippets")
+;; (yas-load-directory "~/.emacs.d/snippets")
 (yas-load-directory "~/.emacs.d/elpa/yasnippet-20150912.1330/snippets")
 (add-hook 'term-mode-hook (lambda()
-    (setq yas-dont-activate t)))
+                            (setq yas-dont-activate t)))
 
 
 ;;-----------------------
@@ -40,7 +40,7 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
-; ;; disable ido faces to see flx highlights.
+;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 (setq ido-auto-merge-work-directories-length -1)
@@ -102,7 +102,7 @@
 ;;-----------------------
 (require 'smex) ; Not needed if you use package.el
 (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-                  ; when Smex is auto-initialized on its first run.
+                                        ; when Smex is auto-initialized on its first run.
 (setq smex-prompt-string "My Lord -> ")
 
 ;; 打开行数设置
@@ -120,9 +120,9 @@
 ;;-----------------------
 (load-theme 'lush t)
 ;;-----------------------
-; (load-theme 'hipster t)
-; (set-frame-parameter (selected-frame) 'alpha '(88 70))
-; (add-to-list 'default-frame-alist '(alpha 88 70))
+;; (load-theme 'hipster t)
+;; (set-frame-parameter (selected-frame) 'alpha '(88 70))
+;; (add-to-list 'default-frame-alist '(alpha 88 70))
 ;;-----------------------
 
 ;;-----------------------
@@ -138,14 +138,14 @@
 ;; ace-window
 ;; 使用M-p之后，还需要再输入数字进行切换，还不如window numbering
 ;;-----------------------
-; (global-set-key (kbd "M-p") 'ace-window)
+;;(global-set-key (kbd "M-p") 'ace-window)
 
 ;;-----------------------
 ;; direx
 ;; sidebar 浏览项目目录
 ;;-----------------------
-; (require 'direx)
-; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+;; (require 'direx)
+;; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
 
 ;;-----------------------
 ;; js2-mode
@@ -165,7 +165,7 @@
 ;; sr-speedbar
 ;; 在js源码里的major mode
 ;;-----------------------
-; (require 'sr-speedbar)
+;; (require 'sr-speedbar)
 
 ;;-----------------------
 ;; smart-mode-line
@@ -186,21 +186,21 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
-    (setq web-mode-code-indent-offset 4)
-    (setq web-mode-markup-indent-offset 4)
-    (setq web-mode-css-indent-offset 4)
-    (setq web-mode-enable-comment-keywords t)
-    ; (setq web-mode-enable-current-column-highlight t)
-    (setq web-mode-enable-current-element-highlight t)
-    ; (setq web-mode-enable-auto-pairing t)
-)
+  (setq web-mode-code-indent-offset 4)
+  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-css-indent-offset 4)
+  (setq web-mode-enable-comment-keywords t)
+                                        ; (setq web-mode-enable-current-column-highlight t)
+  (setq web-mode-enable-current-element-highlight t)
+                                        ; (setq web-mode-enable-auto-pairing t)
+  )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
 
 ;;-----------------------
 ;; electric-indent-mode
 ;;-----------------------
-; (electric-indent-mode 1)
+;; (electric-indent-mode 1)
 
 ;;-----------------------
 ;; emmet mode
@@ -216,8 +216,8 @@
 ;; smartparens
 ;; 括号补全
 ;;-----------------------
-(smartparens-global-mode t)
-
+;; (smartparens-global-mode t)
+(require 'smartparens-config)
 
 ;;-----------------------
 ;; projectile
@@ -231,7 +231,7 @@
 ;; 简单服务器
 ;;-----------------------
 (require 'simple-httpd)
-; (setq httpd-root "/var/www")
+;; (setq httpd-root "/var/www")
 
 ;;-----------------------
 ;; impatient-mode
@@ -245,7 +245,7 @@
 ;;-----------------------
 (require 'company)         
 (add-hook 'after-init-hook 'global-company-mode)
-; (require 'company-web-html)
+;; (require 'company-web-html)
 
 ;;-----------------------
 ;; multiple-cursors
@@ -284,3 +284,28 @@
 ;; 没有从melpa安装，直接使用github的最新源码
 ;;-----------------------
 (require 'neotree)
+
+;;-----------------------
+;; powerline
+;; 在windows 7 x64 上面成功显示
+;;-----------------------
+(require 'powerline)
+(powerline-default-theme)
+
+;;-----------------------
+;; show-paren
+;; 不需要安装，是默认的样式
+;; 设置延时：you have to do before activating show-paren-mode in your .emacs -- emacswiki
+;;-----------------------
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+
+;;-----------------------
+;; hightlight-parentheses
+;;-----------------------
+(require 'highlight-parentheses)
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
