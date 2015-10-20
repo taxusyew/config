@@ -63,6 +63,8 @@
    ("j" windmove-down)
    ("k" windmove-up)
    ("l" windmove-right)
+   ("-" shrink-window-horizontally)
+   ("=" enlarge-window-horizontally)
    ("v" (lambda ()
           (interactive)
           (split-window-right)

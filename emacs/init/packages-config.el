@@ -290,8 +290,9 @@
 ;; 在windows 7 x64 上面成功显示
 ;;-----------------------
 (require 'powerline)
-(powerline-default-theme)
-
+;; (powerline-default-theme)
+;; (powerline-center-theme)
+(powerline-center-evil-theme)
 ;;-----------------------
 ;; show-paren
 ;; 不需要安装，是默认的样式
@@ -309,3 +310,10 @@
   (lambda ()
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
+
+;;-----------------------
+;; auto-revert
+;; 找到了比自己设置f5刷新页面更好用的
+;; Automatically reload files was modified by external program
+;;-----------------------
+(global-auto-revert-mode 1)
