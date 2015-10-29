@@ -30,9 +30,9 @@
 ;; 绑定注释插件快捷键
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
-; 下面的为什么没有用？要第二个才行
-; (global-set-key (kbd "C-e") 'end-of-line)
-; (global-set-key (kbd "C-c C-e") 'end-of-line)
+                                        ; 下面的为什么没有用？要第二个才行
+                                        ; (global-set-key (kbd "C-e") 'end-of-line)
+                                        ; (global-set-key (kbd "C-c C-e") 'end-of-line)
 
 ;; 默认
 ;; 复制  c-insert
@@ -40,20 +40,20 @@
 ;; undo  c-/
 
 ;; smex
-; (global-set-key (kbd "M-x") 'smex)
+                                        ; (global-set-key (kbd "M-x") 'smex)
 
 ;; sr-speedbar 侧边栏
-; (global-set-key (kbd "C-c C-k") 'sr-speedbar-toggle)
+                                        ; (global-set-key (kbd "C-c C-k") 'sr-speedbar-toggle)
 
 ;; 水平分割window c-x 2
 ;; 垂直分割window c-x 3
 ;; 关闭其他window c-x 1
 ;; 改变window大小
-; (global-set-key (kbd "M-<down>") 'enlarge-window)
-; (global-set-key (kbd "M-<up>") 'shrink-window)
-; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
-; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
-; (global-set-key (kbd "C-[") 'indent-region)
+                                        ; (global-set-key (kbd "M-<down>") 'enlarge-window)
+                                        ; (global-set-key (kbd "M-<up>") 'shrink-window)
+                                        ; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
+                                        ; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
+                                        ; (global-set-key (kbd "C-[") 'indent-region)
 
 (global-set-key
  (kbd "C-M-w")
@@ -117,6 +117,10 @@
          "* %?\n\n输入于： %U\n  %i\n")
         ("t" "TODO" entry (file+datetree "~/todo.org")
          "* TODO %^{Description} %?\n\n输入于： %U\n")
+        ("c" "常识" entry (file+datetree "~/common.org")
+         "* %?\n\n输入于： %U\n")
+        ("w" "worklog" entry (file+datetree "~/worklog.org")
+         "* %?\n\n输入于： %U\n")
         ("m" "meeting" entry (file+datetree "~/journal.org")
          "* %^{title} :meeting:\n %?\n\n输入于： %U\n")))
 
@@ -129,7 +133,8 @@
   "e" 'eshell
   "k" 'kill-buffer
   "<tab>" 'switch-to-prev-buffer
-  "f" 'helm-projectile-find-file
+  "f" 'projectile-find-file
+  "1" 'hs-toggle-hiding
   "4" 'end-of-line
   "5" 'evilmi-jump-items
   "q" '(lambda () (interactive) (evil-execute-macro 1 "q")))
