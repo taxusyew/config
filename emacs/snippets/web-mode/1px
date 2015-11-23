@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: 1px
+# key: 1px
+# binding: direct-keybinding
+# --
+<img class="highhold" src="./images/1px.png" />

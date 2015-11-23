@@ -9,6 +9,8 @@
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "<f6>") 'recentf-open-files)
 (global-set-key (kbd "<f8>") 'neotree-toggle)
+(global-set-key (kbd "C-<return>") 'evil-open-below)
+(global-set-key (kbd "C-S-<return>") 'evil-open-above)
 
 
                                         ; 不再使用默认的
@@ -110,18 +112,18 @@
 ;;-----------------------
 (global-set-key (kbd "<f9>") 'org-capture)
 (setq org-capture-templates
-      '(("l" "灵感" entry (file+headline "~/创意.org" "创意")
+      '(("l" "灵感" entry (file+headline "D:\\betamethasone\\lifelog\\创意.org" "创意")
          "* %?\n  %i\n  
           Added: %U %a")
-        ("j" "日记" entry (file+datetree "~/journal.org")
+        ("j" "日记" entry (file+datetree "D:\\betamethasone\\lifelog\\journal.org")
          "* %?\n\n输入于： %U\n  %i\n")
-        ("t" "TODO" entry (file+datetree "~/todo.org")
+        ("t" "TODO" entry (file+datetree "D:\\betamethasone\\lifelog\\todo.org")
          "* TODO %^{Description} %?\n\n输入于： %U\n")
-        ("c" "常识" entry (file+datetree "~/common.org")
+        ("c" "常识" entry (file+datetree "D:\\betamethasone\\lifelog\\common.org")
          "* %?\n\n输入于： %U\n")
-        ("w" "worklog" entry (file+datetree "~/worklog.org")
+        ("w" "worklog" entry (file+datetree "D:\\betamethasone\\lifelog\\worklog.org")
          "* %?\n\n输入于： %U\n")
-        ("m" "meeting" entry (file+datetree "~/journal.org")
+        ("m" "meeting" entry (file+datetree "D:\\betamethasone\\lifelog\\journal.org")
          "* %^{title} :meeting:\n %?\n\n输入于： %U\n")))
 
 

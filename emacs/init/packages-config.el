@@ -1,6 +1,8 @@
 ;; 先跳转到package-install安装，再回来继续配置包
 (load "~/.emacs.d/init/packages-install.el")
 
+;;不产生备份 
+(setq backup-inhibited t)
 ;;-----------------------
 ;; magit
 ;; Before running Git, Magit by default reverts all unmodified
@@ -257,10 +259,12 @@
 ;; aggressive-indent
 ;; 自动化缩进
 ;;-----------------------
-(require 'aggressive-indent)
-(global-aggressive-indent-mode 1)
+;; (require 'aggressive-indent)
+;; (global-aggressive-indent-mode 1)
 
+;; 禁止使用 tab
 (setq-default indent-tabs-mode nil)
+;; 设置tab宽度为 4
 (setq-default tab-width 4)
 
 ;;-----------------------
@@ -379,3 +383,17 @@
 ;; (add-hook 'js2-mode-hook '(evil-leader/set-key
 ;;                             "1" 'hs-toggle-hiding
 ;;                             ))
+
+
+;; (highlight-indentation-mode)
+
+;;-----------------------
+;; 自己的函数来满足开发需求
+;;-----------------------
+(defun dhym/format ()
+  "use aggressive to format all buffer and remove all tabs"
+  (interactive)
+  (untabify (point-min) (point-max))
+  (aggressive-indent-mode)
+  (aggressive-indent-indent-defun)
+  (aggressive-indent-mode))

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: bdtongji
+# key: bdtongji
+# binding: direct-keybinding
+# --
+onclick="_hmt.push(['_trackEvent', '赛百味单人套餐', 'click', '聚合页', 1])" 
