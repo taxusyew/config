@@ -5,13 +5,18 @@
   "zoom"
   ("l" text-scale-increase "large")
   ("s" text-scale-decrease "small"))
-(global-set-key (kbd "<f2>") 'hydra-zoom/body)
-(global-set-key (kbd "<f5>") 'revert-buffer)
+(global-set-key (kbd "<C-f2>") 'bookmark-set)
+(global-set-key (kbd "<f2>") 'bookmark-jump)
+(global-set-key (kbd "<f5>") 'hydra-zoom/body)
 (global-set-key (kbd "<f6>") 'recentf-open-files)
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "C-<return>") 'evil-open-below)
 (global-set-key (kbd "C-S-<return>") 'evil-open-above)
-
+;; 不再使用 SPC-4 来到结尾，要不和 C-a 不配套
+;; 参照 https://github.com/fukamachi/.emacs.d/blob/master/inits/10-evil.el
+;; 这条语句不生效 (global-set-key (kbd "C-e") 'move-end-of-line)
+(define-key evil-insert-state-map (kbd "C-e") 'move-end-of-line)
+(define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
 
                                         ; 不再使用默认的
                                         ; ;; Wind-move
@@ -32,30 +37,26 @@
 ;; 绑定注释插件快捷键
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
-                                        ; 下面的为什么没有用？要第二个才行
-                                        ; (global-set-key (kbd "C-e") 'end-of-line)
-                                        ; (global-set-key (kbd "C-c C-e") 'end-of-line)
-
 ;; 默认
 ;; 复制  c-insert
 ;; 粘贴  
 ;; undo  c-/
 
 ;; smex
-                                        ; (global-set-key (kbd "M-x") 'smex)
+                                        ;; (global-set-key (kbd "M-x") 'smex)
 
 ;; sr-speedbar 侧边栏
-                                        ; (global-set-key (kbd "C-c C-k") 'sr-speedbar-toggle)
+                                        ;; (global-set-key (kbd "C-c C-k") 'sr-speedbar-toggle)
 
 ;; 水平分割window c-x 2
 ;; 垂直分割window c-x 3
 ;; 关闭其他window c-x 1
 ;; 改变window大小
-                                        ; (global-set-key (kbd "M-<down>") 'enlarge-window)
-                                        ; (global-set-key (kbd "M-<up>") 'shrink-window)
-                                        ; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
-                                        ; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
-                                        ; (global-set-key (kbd "C-[") 'indent-region)
+                                        ;; (global-set-key (kbd "M-<down>") 'enlarge-window)
+                                        ;; (global-set-key (kbd "M-<up>") 'shrink-window)
+                                        ;; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
+                                        ;; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
+                                        ;; (global-set-key (kbd "C-[") 'indent-region)
 
 (global-set-key
  (kbd "C-M-w")
@@ -137,6 +138,18 @@
   "<tab>" 'switch-to-prev-buffer
   "f" 'projectile-find-file
   "1" 'hs-toggle-hiding
-  "4" 'end-of-line
+  ;; "4" 'end-of-line
   "5" 'evilmi-jump-items
   "q" '(lambda () (interactive) (evil-execute-macro 1 "q")))
+
+;;-----------------------
+;; 如果 neotree 和 evil-mode 快捷键有冲突
+;; 参照 emacswiki 来进行修正
+;; 如果使用 c-h m 来查看，依然是 neotree 的绑定模式
+;;-----------------------
+(add-hook 'neotree-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
