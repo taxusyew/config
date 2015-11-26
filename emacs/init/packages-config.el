@@ -185,19 +185,32 @@
 ;; http://web-mode.org/ Install
 ;;-----------------------
 (require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-code-indent-offset 4)
   (setq web-mode-markup-indent-offset 4)
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-enable-comment-keywords t)
-                                        ; (setq web-mode-enable-current-column-highlight t)
+  ;; (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-enable-current-element-highlight t)
-                                        ; (setq web-mode-enable-auto-pairing t)
+  ;; (setq web-mode-enable-auto-pairing t)
   )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
+
+;;-----------------------
+;; multi-web-mode
+;; 尝试解决一个html里面有css、js这样会造成一些注释的问题
+;;-----------------------
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'web-mode)
+(setq mweb-tags 
+  '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+    (js-mode  "<script[^>]*>" "</script>")
+    (css-mode "<style[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
 
 ;;-----------------------
 ;; electric-indent-mode

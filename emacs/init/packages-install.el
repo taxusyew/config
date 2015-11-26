@@ -69,6 +69,7 @@
     gh-md
     magit
     multiple-cursors
+    multi-web-mode
     markdown-mode
     rainbow-delimiters
     smex
