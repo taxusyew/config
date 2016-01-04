@@ -1,5 +1,16 @@
 (require 'hydra)
 
+;; 使用 helm 来补全 buffer
+(global-set-key (kbd "C-x b") 'helm-mini)
+
+;; 覆盖使用 ehelp-command
+;; 为了新窗口的自动对焦
+(require 'ehelp)
+(define-key global-map "\C-h" 'ehelp-command)
+(define-key global-map [help] 'ehelp-command)
+(define-key global-map [f1] 'ehelp-command)
+
+
 ;; 字体缩放
 (defhydra hydra-zoom ()
   "zoom"
@@ -18,12 +29,12 @@
 (define-key evil-insert-state-map (kbd "C-e") 'move-end-of-line)
 (define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
 
-                                        ; 不再使用默认的
-                                        ; ;; Wind-move
-                                        ; (global-set-key (kbd "C-c C-j") 'windmove-left)
-                                        ; (global-set-key (kbd "C-c C-k") 'windmove-down)
-                                        ; (global-set-key (kbd "C-c C-l") 'windmove-up)
-                                        ; (global-set-key (kbd "C-c C-;") 'windmove-right)
+;; 不再使用默认的
+;; ;; Wind-move
+;; (global-set-key (kbd "C-c C-j") 'windmove-left)
+;; (global-set-key (kbd "C-c C-k") 'windmove-down)
+;; (global-set-key (kbd "C-c C-l") 'windmove-up)
+;; (global-set-key (kbd "C-c C-;") 'windmove-right)
 
 ;; 覆盖原始的M-x，启用helm
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -52,15 +63,12 @@
 ;; 垂直分割window c-x 3
 ;; 关闭其他window c-x 1
 ;; 改变window大小
-                                        ;; (global-set-key (kbd "M-<down>") 'enlarge-window)
-                                        ;; (global-set-key (kbd "M-<up>") 'shrink-window)
-                                        ;; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
-                                        ;; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
-                                        ;; (global-set-key (kbd "C-[") 'indent-region)
-
-(global-set-key
- (kbd "C-M-w")
- (defhydra hydra-window ()
+;; (global-set-key (kbd "M-<down>") 'enlarge-window)
+;; (global-set-key (kbd "M-<up>") 'shrink-window)
+;; (global-set-key (kbd "M-<left>") 'enlarge-window-horizontally)
+;; (global-set-key (kbd "M-<right>") 'shrink-window-horizontally)
+;; (global-set-key (kbd "C-[") 'indent-region)
+(defhydra hydra-window()
    "window"
    ("h" windmove-left)
    ("j" windmove-down)
@@ -72,12 +80,14 @@
           (interactive)
           (split-window-right)
           (windmove-right))
-    "vert")
+    "vert"
+    :color blue)
    ("x" (lambda ()
           (interactive)
           (split-window-below)
           (windmove-down))
-    "horz")
+    "horz"
+    :color blue)
    ("t" transpose-frame "'")
    ("o" delete-other-windows "one" :color blue)
    ("a" ace-window "ace")
@@ -85,7 +95,11 @@
    ("d" ace-delete-window "del")
    ("i" ace-maximize-window "ace-one" :color blue)
    ("b" ido-switch-buffer "buf")
-   ("q" nil "cancel")))
+   ("q" nil "cancel"))
+
+(global-set-key
+ (kbd "C-M-w")
+ 'hydra-window/body)
 
 ;; 光标插件
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -122,6 +136,8 @@
          "* TODO %^{Description} %?\n\n输入于： %U\n")
         ("c" "常识" entry (file+datetree "D:\\betamethasone\\lifelog\\common.org")
          "* %?\n\n输入于： %U\n")
+        ("z" "早读" entry (file+datetree "D:\\betamethasone\\lifelog\\morningreading.org")
+         "* %?\n\n输入于： %U\n")
         ("w" "worklog" entry (file+datetree "D:\\betamethasone\\lifelog\\worklog.org")
          "* %?\n\n输入于： %U\n")
         ("m" "meeting" entry (file+datetree "D:\\betamethasone\\lifelog\\journal.org")
@@ -134,9 +150,13 @@
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
   "e" 'eshell
+  "b" 'helm-mini
   "k" 'kill-buffer
+  "s" 'isearch-forward
+  "w" 'hydra-window/body
   "<tab>" 'switch-to-prev-buffer
-  "f" 'projectile-find-file
+  ;; "f" 'projectile-find-file
+  "f" 'helm-find-files
   "1" 'hs-toggle-hiding
   ;; "4" 'end-of-line
   "5" 'evilmi-jump-items
@@ -153,3 +173,17 @@
               (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
               (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
               (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+(defun pythonkey ()
+  (interactive)
+  (global-set-key (kbd "<M-h>") 'python-indent-shift-left)
+  (global-set-key (kbd "<M-l>") 'python-indent-shift-right))
+(add-hook 'python-mode-hook 'pythonkey)
+
+  (global-set-key (kbd "<M-h>") 'python-indent-shift-left)
+
+
+(defvar web-mode-comment-formats
+  '(("java"       . "/*")
+    ("javascript" . "//")
+    ))
