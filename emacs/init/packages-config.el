@@ -37,6 +37,13 @@
 (require 'helm-config)
 (setq helm-M-x-fuzzy-match t)
 
+
+;;-----------------------
+;; helm-swoop
+;; 在单个、多个缓冲区查找当前光标所在单词，并可以快速跳转过去
+;;-----------------------
+(require 'helm-swoop)
+
 ;;-----------------------
 ;; flx-ido
 ;;-----------------------
@@ -444,3 +451,8 @@
 ;; 
 (with-eval-after-load 'company
   (company-flx-mode +1))
+
+
+(require 'which-key)
+(which-key-mode)
+(setq which-key-idle-delay 0.1)

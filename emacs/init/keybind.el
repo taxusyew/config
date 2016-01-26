@@ -10,6 +10,46 @@
 (define-key global-map [help] 'ehelp-command)
 (define-key global-map [f1] 'ehelp-command)
 
+;; 我自己的注释
+;; 在每行前面插入 //
+(defun dhym/comment ()
+  (interactive)
+  (let ((startline (1+ (count-lines 1 (region-beginning))))
+        (endline (progn (region-end)
+                        (1+ (count-lines 1 (point)))))
+        (regionstartpoint (region-beginning)))
+    (let ((counter (- endline startline)))
+      (goto-line startline)
+      (setq orgcounter counter)
+      ;; 使用当前最大的数值，保证可以比之后的大
+      (setq spacelen-min (point))
+      (while (> counter 0)
+        (setq counter (- counter 1))
+        ;; 得到当前行最前面的point
+        (beginning-of-line)
+        (setq linestartpoint (point))
+        ;; 得到当前行最前的非空白 point
+        (beginning-of-line-text)
+        (setq lineunemptypoint (point))
+        ;; 得到空白的长度
+        (setq spacelen (- lineunemptypoint linestartpoint))
+        ;; 取最最小的空白长度，但是排除空行，因为它会使得 spacelen 为 0
+        (if (and (> spacelen 0)
+                 (< spacelen spacelen-min))
+            (setq spacelen-min spacelen))
+        (next-line)
+        (message "empty space %s" spacelen))
+      ;; 得到最小空白长度后，一切复原，从头开始
+      (goto-line startline)
+      ;; (beginning-of-line)
+      (setq counter orgcounter)
+      ;; (forward-char spacelen-min)
+      (while (> counter 0)
+        (setq counter (- counter 1))
+        (beginning-of-line)
+        (forward-char spacelen-min)
+        (insert "// ")
+        (next-line)))))
 
 ;; 字体缩放
 (defhydra hydra-zoom ()
@@ -130,7 +170,9 @@
       '(("l" "灵感" entry (file+headline "D:\\betamethasone\\lifelog\\创意.org" "创意")
          "* %?\n  %i\n  
           Added: %U %a")
-        ("j" "日记" entry (file+datetree "D:\\betamethasone\\lifelog\\journal.org")
+        ("r" "日记" entry (file+datetree "D:\\betamethasone\\lifelog\\journal.org")
+         "* %?\n\n输入于： %U\n  %i\n")
+        ("j" "计划" entry (file+datetree "D:\\betamethasone\\lifelog\\plan.org")
          "* %?\n\n输入于： %U\n  %i\n")
         ("t" "TODO" entry (file+datetree "D:\\betamethasone\\lifelog\\todo.org")
          "* TODO %^{Description} %?\n\n输入于： %U\n")
@@ -144,23 +186,58 @@
          "* %^{title} :meeting:\n %?\n\n输入于： %U\n")))
 
 
+
+;;-----------------------
+;; which-key
+;; learn from torgeir/.emacs.d -- github
+;;-----------------------
+(defun declare-prefix (prefix name &optional key fn &rest bindings)
+  "Declares which-key `prefix' and a display `name' for the prefix.
+   Sets up keybindings for the prefix."
+  (which-key-declare-prefixes (concat "SPC " prefix) name)
+  (let ((init-prefix prefix))
+    (while key
+      (evil-leader/set-key (concat init-prefix key) fn)
+      (setq key (pop bindings)
+            fn (pop bindings)))))
+
+(declare-prefix "f" "File&Find"
+                "f" 'helm-find-files
+                "s" 'helm-swoop
+                "o" 'dhym/format)
+
+;; (declare-prefix "p" "Project"
+;;                 "c" 'projectile-switch-project
+;;                 "a" 'helm-projectile-ag
+;;                 "t" 'projectile-find-file-dwim
+;;                 "T" 'projectile-find-test-file
+;;                 "d" 'projectile-find-dir
+;;                 "k" 'projectile-kill-buffers
+;;                 "o" 'open-in-desktop))
 ;;-----------------------
 ;; evil-leader
 ;;-----------------------
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
   "e" 'eshell
-  "b" 'helm-mini
+  "j" 'helm-mini
   "k" 'kill-buffer
   "s" 'isearch-forward
   "w" 'hydra-window/body
+  "r" 'other-window
+  "h" 'dhym/comment
   "<tab>" 'switch-to-prev-buffer
   ;; "f" 'projectile-find-file
-  "f" 'helm-find-files
+  ;; "f" 'helm-find-files
+  "u" 'undo-tree-visualize
+  "n" 'yas-new-snippet
+  ;; "i" 'dhym/format
+  ;; "g" 'helm-do-grep
+  "g" 'helm-projectile-grep
   "1" 'hs-toggle-hiding
-  ;; "4" 'end-of-line
-  "5" 'evilmi-jump-items
-  "q" '(lambda () (interactive) (evil-execute-macro 1 "q")))
+  "o" 'evilmi-jump-items
+  "m" '(lambda () (interactive) (evil-execute-macro 1 "q"))
+  "d" 'delete-window)
 
 ;;-----------------------
 ;; 如果 neotree 和 evil-mode 快捷键有冲突
